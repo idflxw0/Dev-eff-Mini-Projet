@@ -3,12 +3,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
+    /**
+     * Permet de recupere le temps d'execution
+     * @param p1 : soit un dictionnaire, soit une liste
+     * @return  le temps d'execution
+     * @throws IllegalArgumentException
+     */
     public static long getTime(Object p1) throws IllegalArgumentException {
         if (p1 instanceof HashMap<?,?>) {
+            @SuppressWarnings("unchecked")
             HashMap<Integer,String> dict = (HashMap<Integer, String>) p1;
             useDict(dict);
         }
         else if (p1 instanceof ArrayList<?>) {
+            @SuppressWarnings("unchecked")
             ArrayList<Integer> list = (ArrayList<Integer>) p1;
             useArrayList(list);
         }
@@ -17,11 +25,14 @@ public class Main {
         long start = System.currentTimeMillis();
 
 
-
         long end = System.currentTimeMillis();
         return end - start;
     }
 
+    /**
+     * Permet d'utiliser le dictionnaire
+     * @param dictionary : le dictionnaire
+     */
     private static void useDict(HashMap<Integer,String> dictionary) {
         StringBuilder sb = new StringBuilder();
         sb.append("Your dictionary contains : \n");
@@ -37,6 +48,10 @@ public class Main {
         //System.out.println("Your dict contains the value " + dictionary.get("Test") + " for 'Test'\n\n");
     }
 
+    /**
+     * Permet d'utiliser la liste
+     * @param list : la liste
+     */
     private static void useArrayList(ArrayList<Integer> list) {
         StringBuilder sb = new StringBuilder();
         sb.append("Your list contains : ");
