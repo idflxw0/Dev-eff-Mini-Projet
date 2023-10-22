@@ -2,10 +2,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UnionFind<T>{
-    private Map<T,Integer> parent;
+    private Map<T,T> parent;
+    private Map<T,Integer> rank;
 
     public UnionFind() {
         parent = new HashMap<>();
+        rank = new HashMap<>();
     }
 
     public void mergeSet(UnionFind<T> element1, UnionFind<T> element2) {
