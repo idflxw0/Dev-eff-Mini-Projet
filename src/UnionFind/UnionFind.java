@@ -21,6 +21,8 @@ public class UnionFind<T>{
     /**
      * Permet de créer un Set
      * @param element : l'élément à ajouter
+     * Time complexity : O(1) --> On ajoute juste un élément donc c'est constant
+     * Space complexity : O(1) --> On ajoute juste un élément donc c'est constant
      */
     public void add(T element) {
         if (!parent.containsKey(element)) {
@@ -32,6 +34,9 @@ public class UnionFind<T>{
     /**
      * Permet de trouver le représentant d'un groupe d'amis
      * @param element : la personne dont on souhaite trouver le représentant
+     * @return le représentant du groupe d'amis
+     * Time complexity : O(log(n)) --> On parcourt l'arbre jusqu'à trouver le représentant
+     * Space complexity : O(1) --> On ajoute juste un élément donc c'est constant
      */
     public T find(T element) {
         if (!parent.get(element).equals(element)) { // Si c'est pas le représentant
@@ -44,6 +49,9 @@ public class UnionFind<T>{
      * Permet de fusionner deux sets
      * @param element1 : le premier set
      * @param element2 : le deuxième set
+     *Time complexity : O(log(n)) --> On parcourt l'arbre jusqu'à trouver le représentant
+     *                 et on compare les rangs
+     *Space complexity : O(1) --> On ajoute juste un élément donc c'est constant
      */
     public void mergeSet(T element1, T element2) {
         T parent = find(element1);
