@@ -51,7 +51,6 @@ class UnionFindMethodTest {
         expectedRank.put(4,0);
         expectedRank.put(5,0);
 
-        System.out.println(uf.getRank());
         assertEquals(uf.getRank(),expectedRank);
     }
 }

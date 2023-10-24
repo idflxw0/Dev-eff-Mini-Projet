@@ -21,8 +21,8 @@ public class UnionFind<T>{
     /**
      * Permet de créer un Set
      * @param element : l'élément à ajouter
-     * Time complexity : O(1) --> On ajoute juste un élément donc c'est constant
-     * Space complexity : O(1) --> On ajoute juste un élément donc c'est constant
+     * Complexité temporelle : O(1) → On ajoute simplement un élément donc la complexité est constante
+     * Complexité en espace : O(1) → On ajoute simplement un élément donc la complexité est constante
      */
     public void add(T element) {
         if (!parent.containsKey(element)) {
@@ -35,23 +35,23 @@ public class UnionFind<T>{
      * Permet de trouver le représentant d'un groupe d'amis
      * @param element : la personne dont on souhaite trouver le représentant
      * @return le représentant du groupe d'amis
-     * Time complexity : O(log(n)) --> On parcourt l'arbre jusqu'à trouver le représentant
-     * Space complexity : O(1) --> On ajoute juste un élément donc c'est constant
+     * Complexité temporelle : O(log(n)) → On parcourt l'arbre jusqu'à trouver le représentant
+     * Complexité en espace : O(1) → On ajoute simplement un élément donc la complexité est constante
      */
     public T find(T element) {
-        if (!parent.get(element).equals(element)) { // Si c'est pas le représentant
+        if (!parent.get(element).equals(element)) { // Si ce n'est pas le représentant
             parent.put(element,find(parent.get(element)));
         }
         return parent.get(element);
     }
 
     /**
-     * Permet de fusionner deux sets
-     * @param element1 : le premier set
-     * @param element2 : le deuxième set
-     *Time complexity : O(log(n)) --> On parcourt l'arbre jusqu'à trouver le représentant
-     *                 et on compare les rangs
-     *Space complexity : O(1) --> On ajoute juste un élément donc c'est constant
+     * Permet de fusionner deux groupes d'amis
+     * @param element1 : le premier groupe
+     * @param element2 : le second groupe
+     * Complexité temporelle : O(log(n)) → On parcourt l'arbre jusqu'à trouver le représentant
+     *                 puis on compare les rangs
+     * Complexité en espace : O(1) → On ajoute simplement un élément donc la complexité est constante
      */
     public void mergeSet(T element1, T element2) {
         T parent = find(element1);

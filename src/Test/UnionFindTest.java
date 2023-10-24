@@ -1,8 +1,5 @@
 package Test;
-import java.util.HashMap;
-import java.util.Map;
 import UnionFind.UnionFind;
-import static org.junit.jupiter.api.Assertions.*;
 public class UnionFindTest {
     final static int MAX_DATA_SIZE = 10000000;
     private static UnionFind<Integer> uf = new UnionFind<Integer>();
@@ -14,10 +11,17 @@ public class UnionFindTest {
     }
 
     @org.junit.jupiter.api.Test
-    void add_data() {return;}
+    void add_data() {
+
+    }
 
     @org.junit.jupiter.api.Test
-    void getTime() {}
+    public long getTime() {
+        long start = System.currentTimeMillis();
+        //function_to_launch();
+        long end = System.currentTimeMillis();
+        return (end-start)/1000;
+    }
 
     @org.junit.jupiter.api.Test
     void compareTime() {

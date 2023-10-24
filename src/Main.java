@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     /**
-     * Permet de recupere le temps d'execution
+     * Permet de récupérer le temps d'exécution
      * @param p1 : soit un dictionnaire, soit une liste
-     * @return  le temps d'execution
+     * @return  le temps d'exécution
      * @throws IllegalArgumentException
      */
     public static long getTime(Object p1) throws IllegalArgumentException {
+        long start = System.currentTimeMillis();
         if (p1 instanceof HashMap<?,?>) {
             @SuppressWarnings("unchecked")
             HashMap<Integer,String> dict = (HashMap<Integer, String>) p1;
@@ -20,17 +20,16 @@ public class Main {
             ArrayList<Integer> list = (ArrayList<Integer>) p1;
             useArrayList(list);
         }
-        else
+        else {
             throw new IllegalArgumentException("Bad type chosen");
-        long start = System.currentTimeMillis();
-
+        }
 
         long end = System.currentTimeMillis();
         return end - start;
     }
 
     /**
-     * Permet d'utiliser le dictionnaire
+     * Permet de lire un dictionnaire
      * @param dictionary : le dictionnaire
      */
     private static void useDict(HashMap<Integer,String> dictionary) {
@@ -49,7 +48,7 @@ public class Main {
     }
 
     /**
-     * Permet d'utiliser la liste
+     * Permet de lire une liste
      * @param list : la liste
      */
     private static void useArrayList(ArrayList<Integer> list) {
