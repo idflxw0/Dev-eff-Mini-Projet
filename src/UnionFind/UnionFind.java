@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UnionFind<T>{
-    private Map<T,T> parent;
-    private Map<T,Integer> rank;
+    private final Map<T,T> parent;
+    private final Map<T,Integer> rank;
 
     public UnionFind() {
         parent = new HashMap<>();
@@ -28,6 +28,18 @@ public class UnionFind<T>{
         if (!parent.containsKey(element)) {
             parent.put(element,element);
             rank.put(element,0);
+        }
+    }
+
+    /**
+     * Enlève un lien d'amitié
+     * @param element : le 1er ami
+     * @param friend : le 2ᵉ ami
+     */
+    public void remove(T element, T friend) {
+        if (parent.containsKey(element)) {
+            parent.remove(element,friend);
+            rank.put(element, rank.get(element) - 1);
         }
     }
 

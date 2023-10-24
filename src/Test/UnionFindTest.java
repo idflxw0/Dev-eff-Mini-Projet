@@ -26,6 +26,4 @@ public class UnionFindTest {
     @org.junit.jupiter.api.Test
     void compareTime() {
     }
-
-
 }

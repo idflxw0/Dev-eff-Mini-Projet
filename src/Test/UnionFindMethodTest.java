@@ -53,4 +53,23 @@ class UnionFindMethodTest {
 
         assertEquals(uf.getRank(),expectedRank);
     }
+
+    @org.junit.jupiter.api.Test
+    void remove(){
+        addUf();
+        uf.mergeSet(0,2);
+        uf.mergeSet(3,5);
+        uf.mergeSet(0,3);
+        uf.remove(3,5);
+        uf.remove(0,2);
+        Map<Integer,Integer> expectedRank = new HashMap<>();
+        expectedRank.put(0,1);
+        expectedRank.put(1,0);
+        expectedRank.put(2,0);
+        expectedRank.put(3,0);
+        expectedRank.put(4,0);
+        expectedRank.put(5,0);
+
+        assertEquals(uf.getRank(),expectedRank);
+    }
 }
