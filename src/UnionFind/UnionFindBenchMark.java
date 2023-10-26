@@ -12,16 +12,13 @@ public class UnionFindBenchMark {
         * C'est mieux qu'on utitilise consumer car toutes les methodes qu'on a fait sont void à part find
         * Mais ici on s'en fout de la valeur de retour de find car on a deja testé find dans UnionFindTest.java
     */
+    private final static int MIN = 100_000, MAX = 1_000_000, PAS = 1000;
 
-    final static int MIN = 100_000, MAX = 1_000_000, PAS = 1000;
-    private static int MILLISEC = 1000000;
-    private static final int NB_METHODES = 3;
     public static double getTime(Consumer<UnionFind<Integer>> function, UnionFind<Integer> uf) {
         long d = System.nanoTime();
         function.accept(uf);
         return (System.nanoTime() - d) / 1E6;
     }
-
     public static void main(String[] args) {
         List<Consumer<UnionFind<Integer>>> functions = Arrays.asList(
                 uf -> {
