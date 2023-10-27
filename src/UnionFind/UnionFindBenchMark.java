@@ -45,15 +45,16 @@ public class UnionFindBenchMark {
                     }
             );
 
-            List<String> descriptions = Arrays.asList("add time: ", "find time: ", "merge time: ");
+
+            System.out.print("Id;Add time;Find time;Merge time\n");
             long startTime = System.nanoTime();
             for (int n = MIN; n <= MAX; n += PAS) {
-                System.out.print(n + "\t");
+                System.out.print(n);
                 UnionFind<Integer> unionFind = new UnionFind<Integer>();
                 for (int i = 0; i < functions.size(); i++) {
                     Consumer<UnionFind<Integer>> f = functions.get(i);
                     double time = getTime(f, unionFind);
-                    System.out.print(descriptions.get(i) + time + "\t");
+                    System.out.print(";" + time);
                 }
                 System.out.println();
             }
