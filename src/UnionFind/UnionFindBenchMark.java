@@ -3,17 +3,16 @@ import UnionFind.UnionFind;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class UnionFindBenchMark {
     /*
-        * Function <Integer,String> il prend un Integer et return un String
-        * Consumer <Integer> il prend un Integer et retourne rien
-        * C'est mieux qu'on utitilise consumer car toutes les methodes qu'on a fait sont void à part find
-        * Mais ici on s'en fout de la valeur de retour de find car on a deja testé find dans UnionFindTest.java
+        * Function <Integer, String> : prend un Integer et return un String
+        * Consumer <Integer> : prend un Integer et return rien
+        * C'est mieux qu'on utilise consumer, car toutes les méthodes qu'on a faites sont void, à part find
+        * Mais ici, on s'en fout de la valeur de retour de find parce qu'on a deja testé find dans UnionFindTest.java
     */
     private final static int MIN = 100_000, MAX = 1_000_000, PAS = 1000;
 
@@ -24,11 +23,11 @@ public class UnionFindBenchMark {
     }
     public static void main(String[] args) {
         try {
-            // Redirecting standard output to a file
+            // On redirige la sortie standard vers un fichier
             PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
             System.setOut(out);
 
-            List<Consumer<UnionFind<Integer>>> functions = Arrays.asList(
+            List<Consumer<UnionFind<Integer>>> functions = Arrays.asList (
                     uf -> {
                         for (int i = 0; i < MAX; i++) {
                             uf.add(i);
