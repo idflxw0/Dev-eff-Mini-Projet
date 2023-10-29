@@ -4,13 +4,12 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.Random;
+import java.util.function.Consumer;
 
 public class UnionFindBenchMark {
     private final static int MIN = 100_000, MAX = 1_000_000, PAS = 1000;
     private static Random rand = new Random();
-
     public static double getTime(Consumer<UnionFind<Integer>> function, UnionFind<Integer> uf) {
         long d = System.nanoTime();
         function.accept(uf);
@@ -18,9 +17,11 @@ public class UnionFindBenchMark {
     }
     public static void main(String[] args) {
         try {
+            // On redirige la sortie standard vers un fichier
             PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
             System.setOut(out);
-            List<Consumer<UnionFind<Integer>>> functions = Arrays.asList(
+
+            List<Consumer<UnionFind<Integer>>> functions = Arrays.asList (
                     uf -> {
                         for (int i = 0; i < MAX; i++) {
                             uf.add(i);
@@ -40,21 +41,23 @@ public class UnionFindBenchMark {
                     }
             );
 
-            List<String> descriptions = Arrays.asList("add time: ", "find time: ", "merge time: ");
+            System.out.print("Friends;Add time;Find time;Merge time\n");
             long startTime = System.nanoTime();
             for (int n = MIN; n <= MAX; n += PAS) {
-                System.out.print(n + "\t");
+                System.out.print(n);
                 UnionFind<Integer> unionFind = new UnionFind<Integer>();
                 for (int i = 0; i < functions.size(); i++) {
                     Consumer<UnionFind<Integer>> f = functions.get(i);
                     double time = getTime(f, unionFind);
-                    System.out.print(descriptions.get(i) + time + "\t");
+                    System.out.print(";" + time);
                 }
                 System.out.println();
             }
-            double totalTime = (System.nanoTime() - startTime) / 1E6;
-            System.out.println("Temps total pour terminer le programme: " + totalTime + " ms");
-            out.close();
+//            Ne sera pas utilisé pour le csv
+//            double totalTime = (System.nanoTime() - startTime) / 1E6;
+//            System.out.print("\nTemps total pour terminer le programme : " + totalTime + " ms");
+
+            out.close(); // On arrête la redirection vers le fichier
         } catch (Exception e) {
             e.printStackTrace();
         }

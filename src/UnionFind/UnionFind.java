@@ -32,18 +32,6 @@ public class UnionFind<T>{
     }
 
     /**
-     * Enlève un lien d'amitié
-     * @param element : le 1er ami
-     * @param friend : le 2ᵉ ami
-     */
-    public void remove(T element, T friend) {
-        if (parent.containsKey(element)) {
-            parent.remove(element,friend);
-            rank.put(element, rank.get(element) - 1);
-        }
-    }
-
-    /**
      * Permet de trouver le représentant d'un groupe d'amis
      * @param element : la personne dont on souhaite trouver le représentant
      * @return le représentant du groupe d'amis
