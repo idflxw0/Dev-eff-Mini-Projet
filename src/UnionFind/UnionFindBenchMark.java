@@ -38,11 +38,16 @@ public class UnionFindBenchMark {
                             int randomElement2 = rand.nextInt(MAX);
                             uf.mergeSet(randomElement1, randomElement2); // Random merge
                         }
+                    },
+                    uf -> {
+                        for (int i = 0; i < MAX; i++) {
+                            uf.remove(i,rand.nextInt(MAX)); // Random remove
+                        }
                     }
             );
 
-            System.out.print("Friends;Add time;Find time;Merge time\n");
-            long startTime = System.nanoTime();
+            System.out.print("Friends;Add time;Find time;Merge time;Remove time\n");
+//            long startTime = System.nanoTime();
             for (int n = MIN; n <= MAX; n += PAS) {
                 System.out.print(n);
                 UnionFind<Integer> unionFind = new UnionFind<Integer>();

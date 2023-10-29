@@ -6,14 +6,15 @@ import UnionFind.UnionFind;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UnionFindMethodTest {
-    private static UnionFind<Integer> uf = new UnionFind<Integer>();
-    private static void addUf() {
+    private static UnionFind<Integer>  addUf() {
+        UnionFind<Integer> uf = new UnionFind<Integer>();
         for (int i = 0; i<=5; i++) uf.add(i);
+        return uf;
     }
 
     @org.junit.jupiter.api.Test
     void add() {
-        addUf();
+        UnionFind<Integer> uf = addUf();
         Map<Integer,Integer> expectedParent = new HashMap<>();
         expectedParent.put(0,0);
         expectedParent.put(1,1);
@@ -27,7 +28,7 @@ class UnionFindMethodTest {
 
     @org.junit.jupiter.api.Test
     void find() {
-        addUf();
+        UnionFind<Integer> uf = addUf();
         uf.mergeSet(0,2);
         assertEquals(0,uf.find(0));
         assertEquals(1,uf.find(1));
@@ -39,7 +40,7 @@ class UnionFindMethodTest {
 
     @org.junit.jupiter.api.Test
     void merge(){
-        addUf();
+        UnionFind<Integer> uf = addUf();
         uf.mergeSet(0,2);
         uf.mergeSet(3,5);
         uf.mergeSet(0,3);
@@ -48,6 +49,25 @@ class UnionFindMethodTest {
         expectedRank.put(1,0);
         expectedRank.put(2,0);
         expectedRank.put(3,1);
+        expectedRank.put(4,0);
+        expectedRank.put(5,0);
+
+        assertEquals(uf.getRank(),expectedRank);
+    }
+
+    @org.junit.jupiter.api.Test
+    void remove(){
+        UnionFind<Integer> uf = addUf();
+        uf.mergeSet(0,2);
+        uf.mergeSet(3,5);
+        uf.mergeSet(0,3);
+        uf.remove(3,5);
+        uf.remove(0,2);
+        Map<Integer,Integer> expectedRank = new HashMap<>();
+        expectedRank.put(0,1);
+        expectedRank.put(1,0);
+        expectedRank.put(2,0);
+        expectedRank.put(3,0);
         expectedRank.put(4,0);
         expectedRank.put(5,0);
 
