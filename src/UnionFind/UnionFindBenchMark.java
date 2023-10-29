@@ -8,12 +8,6 @@ import java.util.function.Consumer;
 import java.util.Random;
 
 public class UnionFindBenchMark {
-    /*
-        * Function <Integer,String> il prend un Integer et return un String
-        * Consumer <Integer> il prend un Integer et retourne rien
-        * C'est mieux qu'on utitilise consumer car toutes les methodes qu'on a fait sont void à part find
-        * Mais ici on s'en fout de la valeur de retour de find car on a deja testé find dans UnionFindTest.java
-    */
     private final static int MIN = 100_000, MAX = 1_000_000, PAS = 1000;
     private static Random rand = new Random();
 

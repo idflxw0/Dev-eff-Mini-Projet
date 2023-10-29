@@ -1,4 +1,4 @@
-100000	add time: 134.3729	find time: 193.2205	merge time: 1047.7021	
+100000	add time: 134.3729	find time: 193.2205	merge time: 1047.7021
 101000	add time: 88.8049	find time: 115.2997	merge time: 620.8184	
 102000	add time: 92.7015	find time: 116.0093	merge time: 679.3511	
 103000	add time: 86.0602	find time: 245.8913	merge time: 1004.9657	
