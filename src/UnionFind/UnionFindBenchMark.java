@@ -1,12 +1,11 @@
 package UnionFind;
-import UnionFind.UnionFind;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.Random;
 
 public class UnionFindBenchMark {
     /*
@@ -16,6 +15,7 @@ public class UnionFindBenchMark {
         * Mais ici on s'en fout de la valeur de retour de find car on a deja testé find dans UnionFindTest.java
     */
     private final static int MIN = 100_000, MAX = 1_000_000, PAS = 1000;
+    private static Random rand = new Random();
 
     public static double getTime(Consumer<UnionFind<Integer>> function, UnionFind<Integer> uf) {
         long d = System.nanoTime();
@@ -24,10 +24,8 @@ public class UnionFindBenchMark {
     }
     public static void main(String[] args) {
         try {
-            // Redirecting standard output to a file
             PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
             System.setOut(out);
-
             List<Consumer<UnionFind<Integer>>> functions = Arrays.asList(
                     uf -> {
                         for (int i = 0; i < MAX; i++) {
@@ -36,12 +34,14 @@ public class UnionFindBenchMark {
                     },
                     uf -> {
                         for (int i = 0; i < MAX; i++) {
-                            uf.find(i);
+                            uf.find(rand.nextInt(MAX)); // Random find
                         }
                     },
                     uf -> {
                         for (int i = 1; i < MAX; i++) {
-                            uf.mergeSet(i, i - 1);
+                            int randomElement1 = rand.nextInt(MAX);
+                            int randomElement2 = rand.nextInt(MAX);
+                            uf.mergeSet(randomElement1, randomElement2); // Random merge
                         }
                     }
             );
@@ -60,8 +60,7 @@ public class UnionFindBenchMark {
             }
             double totalTime = (System.nanoTime() - startTime) / 1E6;
             System.out.println("Temps total pour terminer le programme: " + totalTime + " ms");
-
-            out.close(); // Close the output stream
+            out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
