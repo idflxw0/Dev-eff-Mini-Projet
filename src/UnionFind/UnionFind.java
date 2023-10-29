@@ -38,7 +38,7 @@ public class UnionFind<T>{
      * Complexité temporelle : O(1) → On ajoute simplement un élément donc la complexité est constante
      * Complexité en espace : O(1) → On ajoute simplement un élément donc la complexité est constante
      */
-    public void remove(T elemgit aent, T friend) {
+    public void remove(T element, T friend) {
         if (parent.containsKey(element)) {
             parent.remove(element,friend);
             rank.put(element, rank.get(element) - 1);
